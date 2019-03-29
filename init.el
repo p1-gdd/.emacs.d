@@ -54,6 +54,8 @@
   :hook (after-init . global-flycheck-mode)
   )
 
+(use-package flycheck-pkg-config)
+
 ; C/C++ booyaaaka !
 ;; company
 (global-ede-mode)
@@ -113,6 +115,28 @@
                      )
                  )
   )
+
+;; Semantic modes
+(setq semantic-default-submodes
+      '(;; Perform semantic actions during idle time
+        global-semantic-idle-scheduler-mode
+        ;; Use a database of parsed tags
+        global-semanticdb-minor-mode
+        ;; Decorate buffers with additional semantic information
+        global-semantic-decoration-mode
+        ;; Highlight the name of the function you're currently in
+        global-semantic-highlight-func-mode
+        ;; show the name of the function at the top in a sticky
+        ;; global-semantic-stickyfunc-mode
+        ;; Generate a summary of the current tag when idle
+        global-semantic-idle-summary-mode
+        ;; Show a breadcrumb of location during idle time
+        global-semantic-idle-breadcrumbs-mode
+        ;; Switch to recently changed tags with `semantic-mrub-switch-tags',
+        ;; or `C-x B'
+        ;;global-semantic-mru-bookmark-mode
+        )
+      )
 
 ;;; LaTeX/auctex
 (use-package tex
@@ -183,6 +207,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes (quote (leuven)))
+ '(gdb-many-windows t)
  '(package-selected-packages (quote (use-package)))
 )
 (custom-set-faces
@@ -197,6 +222,15 @@
 (global-set-key (kbd "C-M-<right>") 'windmove-right)
 (global-set-key (kbd "C-M-<up>")    'windmove-up)
 (global-set-key (kbd "C-M-<down>")  'windmove-down)
+
+;;; DevHelp sur le mot via <f7>
+(defun devhelp-word-at-point ()
+  "Cherche dans DevHelp le mot courant sous le curseur"
+  (interactive)
+  (start-process-shell-command "devhelp" nil (concat "devhelp" " -s " (current-word)))
+  (set-process-query-on-exit-flag (get-process "devhelp") nil)
+  )
+(global-set-key (kbd "<f7>") 'devhelp-word-at-point)
 
 ;;; Neomutt intégration
 (add-to-list 'auto-mode-alist '("/tmp/neomutt-*" . mail-mode))
