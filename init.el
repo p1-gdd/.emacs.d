@@ -197,6 +197,14 @@
   (flycheck-plantuml-setup)
   )
 
+;; Markdown
+(use-package markdown-mode
+  :config
+  )
+(use-package markdown-toc
+  :config
+  )
+
 ;;; Gitlab et CI/CD
 (use-package gitlab-ci-mode)
 (use-package gitlab-ci-mode-flycheck)
