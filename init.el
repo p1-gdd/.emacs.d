@@ -214,9 +214,45 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(LaTeX-item-indent 0 t)
+ '(LaTeX-verbatim-macros-with-braces (quote ("lstinline")) t)
+ '(LaTeX-verbatim-macros-with-delims (quote ("verb" "verb*" "lstinline")) t)
+ '(TeX-view-program-selection
+   (quote
+    (((output-dvi has-no-display-manager)
+      "dvi2tty")
+     ((output-dvi style-pstricks)
+      "dvips and gv")
+     (output-dvi "Zathura")
+     (output-pdf "Zathura")
+     (output-html "xdg-open"))))
  '(custom-enabled-themes (quote (leuven)))
  '(gdb-many-windows t)
  '(package-selected-packages (quote (use-package)))
+ '(reftex-plug-into-AUCTeX (quote (t t t t t)) t)
+ '(reftex-ref-style-alist
+   (quote
+    (("Default" t
+      (("\\ref" 13)
+       ("\\pageref" 112)))
+     ("Varioref" "varioref"
+      (("\\vref" 118)
+       ("\\vrefrange" 114)
+       ("\\vpageref" 103)
+       ("\\Vref" 86)
+       ("\\Ref" 82)))
+     ("Fancyref" "fancyref"
+      (("\\fref" 102)
+       ("\\Fref" 70)))
+     ("Hyperref" "hyperref"
+      (("\\autoref" 97)
+       ("\\autopageref" 117)))
+     ("Cleveref" "cleveref"
+      (("\\cref" 99)
+       ("\\Cref" 67)
+       ("\\cpageref" 100)
+       ("\\Cpageref" 68))))) t)
+ '(reftex-ref-style-default-list (quote ("Default" "Varioref")) t)
 )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
