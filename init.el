@@ -25,7 +25,11 @@
 
 (use-package diff-hl
     :ensure t
-    :init (diff-hl-mode)
+    :init
+    (diff-hl-margin-mode)
+    (diff-hl-flydiff-mode)
+    :hook
+    (dired-mode . diff-hl-dired-mode)
     )
 
 ;; Global Configuration
@@ -49,7 +53,7 @@
 (delete-selection-mode)
 ;;; Bindings
 (global-set-key (kbd "M-b") 'list-buffers)
-(global-set-key (kbd "C-S") 'isearch-forward-symbol-at-point)
+(global-set-key (kbd "C-S-s") 'isearch-forward-symbol-at-point)
 
 ;; External packages
 ;;; Editorconfig
@@ -466,7 +470,7 @@
       )
     )
   )
-(global-set-key [C-d] 'duplicate-line-or-region)
+(global-set-key (kbd "C-d") 'duplicate-line-or-region)
 
 (defun decrement-number-at-point ()
   (interactive)
