@@ -56,6 +56,13 @@
 (global-set-key (kbd "C-S-s") 'isearch-forward-symbol-at-point)
 
 ;; External packages
+;;; xClip to cut/copy to clipboard
+(use-package xclip
+    :ensure t
+    :config
+    (xclip-mode 1)
+    )
+
 ;;; Editorconfig
 (use-package editorconfig
   :ensure t
@@ -395,7 +402,7 @@
  '(lsp-pyls-plugins-flake8-ignore '("E501"))
  '(lsp-pylsp-plugins-flake8-ignore ["E501"])
  '(package-selected-packages
-      '(gruvbox-theme dockerfile-mode lsp-mode sqlite3 highlight-function-calls hl-block-mode magit-todos diff-hl emacsql-sqlite graphviz-dot-mode cmake-mode json-mode subed pdf-tools dap-mode django-commands company-auctex company-reftex company-shell company ac-c-headers ac-clang ac-rtags auto-complete auto-complete-c-headers sr-speedbar mermaid-mode aircon-theme iodine-theme twilight-theme one-themes twilight-bright-theme realgud realgud-ipdb realgud-lldb realgud-node-debug realgud-node-inspect editorconfig editorconfig-charset-extras editorconfig-custom-majormode editorconfig-domain-specific editorconfig-generate groovy-mode jenkinsfile-mode company-rtags disaster ecb flycheck-projectile flycheck-rtags helm helm-ag helm-flycheck helm-projectile helm-rtags projectile projectile-git-autofetch rtags srefactor smart-tabs-mode plantuml-mode magit auctex-lua company-lua flymake-lua lua-mode idle-highlight-mode use-package))
+      '(xclip gruvbox-theme dockerfile-mode lsp-mode sqlite3 highlight-function-calls hl-block-mode magit-todos diff-hl emacsql-sqlite graphviz-dot-mode cmake-mode json-mode subed pdf-tools dap-mode django-commands company-auctex company-reftex company-shell company ac-c-headers ac-clang ac-rtags auto-complete auto-complete-c-headers sr-speedbar mermaid-mode aircon-theme iodine-theme twilight-theme one-themes twilight-bright-theme realgud realgud-ipdb realgud-lldb realgud-node-debug realgud-node-inspect editorconfig editorconfig-charset-extras editorconfig-custom-majormode editorconfig-domain-specific editorconfig-generate groovy-mode jenkinsfile-mode company-rtags disaster ecb flycheck-projectile flycheck-rtags helm helm-ag helm-flycheck helm-projectile helm-rtags projectile projectile-git-autofetch rtags srefactor smart-tabs-mode plantuml-mode magit auctex-lua company-lua flymake-lua lua-mode idle-highlight-mode use-package))
  '(plantuml-default-exec-mode 'jar)
  '(plantuml-executable-args '("-charset" "UTF-8" "-tsvg"))
  '(plantuml-indent-level 2)
