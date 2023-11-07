@@ -53,7 +53,6 @@
 (delete-selection-mode)
 ;;; Bindings
 (global-set-key (kbd "M-b") 'list-buffers)
-(global-set-key (kbd "C-S-s") 'isearch-forward-symbol-at-point)
 
 ;; External packages
 ;;; xClip to cut/copy to clipboard
