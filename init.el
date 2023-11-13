@@ -4,8 +4,8 @@
 (require 'package)
 ;;; Code:
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/")
-             )
+    '("melpa" . "https://melpa.org/packages/")
+    )
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -108,37 +108,37 @@
 ;;;; C/C++ booyaaaka !
 ;; Treemacs (https://github.com/Alexander-Miller/treemacs)
 (use-package treemacs
-  :ensure t
-  :defer t
-  :init
-  (with-eval-after-load 'winum
-    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
-  :config
-  (progn
-    (setq treemacs-display-in-side-window          t
-          treemacs-follow-after-init               t
-          treemacs-expand-after-init               t
-          treemacs-header-scroll-indicators        '(nil . "^^^^^^")
-          treemacs-indentation                     2
-          treemacs-indentation-string              " "
-          treemacs-missing-project-action          'ask
-          treemacs-persist-file                    (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
-          treemacs-position                        'left
-          treemacs-recenter-after-project-jump     'always
-          treemacs-recenter-after-project-expand   'on-distance
-          treemacs-litter-directories              '("/node_modules" "/.venv" "/.cask")
-          treemacs-show-cursor                     nil
-          treemacs-show-hidden-files               t
-          treemacs-sorting                         'alphabetic-asc
-          )
-    (treemacs-resize-icons 16)
-    (treemacs-follow-mode t)
-    (treemacs-filewatch-mode t)
-    (treemacs-fringe-indicator-mode 'always)
-
-    (treemacs-hide-gitignored-files-mode nil))
-  :bind
-  (:map global-map
+    :ensure t
+    :defer t
+    :init
+    (with-eval-after-load 'winum
+        (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+    :config
+    (progn
+        (setq
+            treemacs-display-in-side-window          t
+            treemacs-follow-after-init               t
+            treemacs-expand-after-init               t
+            treemacs-header-scroll-indicators        '(nil . "^^^^^^")
+            treemacs-indentation                     2
+            treemacs-missing-project-action          'ask
+            treemacs-persist-file                    (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+            treemacs-position                        'left
+            treemacs-recenter-after-project-jump     'always
+            treemacs-recenter-after-project-expand   'on-distance
+            treemacs-litter-directories              '("/node_modules" "/.venv" "/.cask")
+            treemacs-show-cursor                     nil
+            treemacs-show-hidden-files               t
+            treemacs-sorting                         'alphabetic-asc
+            )
+        (treemacs-resize-icons 16)
+        (treemacs-follow-mode t)
+        (treemacs-filewatch-mode t)
+        (treemacs-fringe-indicator-mode 'always)
+        (treemacs-indent-guide-mode t)
+        (treemacs-hide-gitignored-files-mode nil))
+    :bind
+    (:map global-map
         ("M-0"       . treemacs-select-window)
         ("C-x t t"   . treemacs)
         ("C-x t 1"   . treemacs-delete-other-windows)
@@ -147,7 +147,7 @@
         ("C-x t C-t" . treemacs-find-file)
         ("C-x t M-t" . treemacs-find-tag)
         )
-  )
+    )
 
 (use-package cmake-mode)
 
@@ -412,6 +412,22 @@
  '(rst-compile-toolsets '((html "rst2html" ".html" nil) (pdf "rst2pdf" ".pdf" nil)))
  '(split-height-threshold nil)
  '(split-width-threshold 160)
+ '(treemacs-RET-actions-config
+      '((treemacs-lsp-treemacs-generic-root-open . treemacs-collapse-extension-node)
+           (treemacs-lsp-treemacs-generic-root-closed . treemacs-expand-extension-node)
+           (treemacs-lsp-treemacs-generic-node-open . lsp-treemacs-perform-ret-action)
+           (treemacs-lsp-treemacs-generic-node-closed . lsp-treemacs-perform-ret-action)
+           (root-node-open . treemacs-toggle-node)
+           (root-node-closed . treemacs-toggle-node)
+           (dir-node-open . treemacs-toggle-node)
+           (dir-node-closed . treemacs-toggle-node)
+           (file-node-open . treemacs-visit-node-default)
+           (file-node-closed . treemacs-visit-node-default)
+           (tag-node-open . treemacs-toggle-node-prefer-tag-visit)
+           (tag-node-closed . treemacs-toggle-node-prefer-tag-visit)
+           (tag-node . treemacs-visit-node-default)))
+ '(treemacs-filewatch-mode t)
+ '(treemacs-fringe-indicator-mode '>)
  '(warning-suppress-log-types '((comp) (use-package) (emacsql)))
  '(warning-suppress-types '((emacsql))))
 
@@ -514,7 +530,7 @@
  '(magit-diff-context ((t (:extend t :foreground "white"))))
  '(magit-diff-context-highlight ((t (:extend t :background "#3a3a3a" :foreground "white"))))
  '(magit-diff-file-heading ((t (:extend t :background "white" :foreground "black" :weight bold))))
- '(magit-diff-file-heading-highlight ((t (:inherit magit-diff-file-heading :extend t))))
+ '(magit-diff-file-heading-highlight ((t (:inherit magit-diff-file-heading :extend t :background "brightblack"))))
  '(magit-diff-hunk-region ((t (:inherit bold :extend t :background "black" :slant italic))))
  '(mode-line ((t (:background "color-178" :foreground "color-232" :box nil))))
  '(mode-line-inactive ((t (:background "color-94" :foreground "color-252" :box nil))))
