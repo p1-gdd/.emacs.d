@@ -516,9 +516,10 @@
 (global-set-key (kbd "M-<right>") 'increment-number-at-point)
 
 (add-hook 'prog-mode-hook #'(lambda () (hs-minor-mode t)))
-(global-set-key (kbd "C-<prior>") 'hs-hide-block)
-(global-set-key (kbd "C-<next>") 'hs-show-block)
-(global-set-key (kbd "C-S-<next>") 'hs-show-all)
+(global-set-key (kbd "M-[ [") 'hs-show-block)
+(global-set-key (kbd "M-[ ]") 'hs-hide-block)
+(global-set-key (kbd "M-[ {") 'hs-show-all)
+(global-set-key (kbd "M-[ }") 'hs-hide-all)
 
 (provide 'init)
 ;;; init.el ends here
