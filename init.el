@@ -35,7 +35,6 @@
 (use-package openwith
     :ensure t
     :init
-    (setq openwith-associations '(("\\.pdf\\'" "zathura" (file))))
     (openwith-mode))
 
 ;; Global Configuration
@@ -238,7 +237,12 @@
     )
 (global-set-key (kbd "C-c l e") 'lsp-treemacs-errors-list)
 
-;; (use-package lsp-java)
+(use-package systemd)
+(add-to-list 'auto-mode-alist '("\\.service\\'" . systemd-mode))
+(add-to-list 'auto-mode-alist '("\\.path\\'" . systemd-mode))
+(add-to-list 'auto-mode-alist '("\\.network\\'" . systemd-mode))
+(add-to-list 'auto-mode-alist '("\\.unit\\'" . systemd-mode))
+(add-to-list 'auto-mode-alist '("\\.timer\\'" . systemd-mode))
 
 (use-package which-key
     :config
@@ -283,10 +287,8 @@
   :config
   (flycheck-pos-tip-mode))
 
-(setq auto-mode-alist
-      (cons '("SConstruct" . python-mode) auto-mode-alist))
-(setq auto-mode-alist
-      (cons '("SConscript" . python-mode) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("Sconstruct" . python-mode))
+(add-to-list 'auto-mode-alist '("Sconscript" . python-mode))
 
 ;; Available C style:
 ;; “gnu”: The default style for GNU projects
@@ -406,8 +408,19 @@
  '(lsp-document-sync-method nil)
  '(lsp-pyls-plugins-flake8-ignore '("E501"))
  '(lsp-pylsp-plugins-flake8-ignore ["E501"])
+ '(openwith-associations
+      '(("\\.pdf\\'" "zathura"
+            (file))
+           ("\\.png\\'" "qimgv"
+               (file))
+           ("\\.\\(?:pdf|ps|dvi\\)\\'" "zathura"
+               (file))
+           ("\\.\\(?:mp3|mp4|mpe?g\\|avi\\|wmv\\)\\'" "mpv"
+               (file))
+           ("\\.\\(?:jpe?g\\|png|gif|tif|bmp|xbm|pbm|pgm|ppm|pnm\\)\\'" "qimgv"
+               (file))))
  '(package-selected-packages
-      '(openwith xclip gruvbox-theme dockerfile-mode lsp-mode sqlite3 highlight-function-calls hl-block-mode magit-todos diff-hl emacsql-sqlite graphviz-dot-mode cmake-mode json-mode subed pdf-tools dap-mode django-commands company-auctex company-reftex company-shell company ac-c-headers ac-clang ac-rtags auto-complete auto-complete-c-headers sr-speedbar mermaid-mode aircon-theme iodine-theme twilight-theme one-themes twilight-bright-theme realgud realgud-ipdb realgud-lldb realgud-node-debug realgud-node-inspect editorconfig editorconfig-charset-extras editorconfig-custom-majormode editorconfig-domain-specific editorconfig-generate groovy-mode jenkinsfile-mode company-rtags disaster ecb flycheck-projectile flycheck-rtags helm helm-ag helm-flycheck helm-projectile helm-rtags projectile projectile-git-autofetch rtags srefactor smart-tabs-mode plantuml-mode magit auctex-lua company-lua flymake-lua lua-mode idle-highlight-mode use-package))
+      '(rust-mode systemd openwith xclip gruvbox-theme dockerfile-mode lsp-mode sqlite3 highlight-function-calls hl-block-mode magit-todos diff-hl emacsql-sqlite graphviz-dot-mode cmake-mode json-mode subed pdf-tools dap-mode django-commands company-auctex company-reftex company-shell company ac-c-headers ac-clang ac-rtags auto-complete auto-complete-c-headers sr-speedbar mermaid-mode aircon-theme iodine-theme twilight-theme one-themes twilight-bright-theme realgud realgud-ipdb realgud-lldb realgud-node-debug realgud-node-inspect editorconfig editorconfig-charset-extras editorconfig-custom-majormode editorconfig-domain-specific editorconfig-generate groovy-mode jenkinsfile-mode company-rtags disaster ecb flycheck-projectile flycheck-rtags helm helm-ag helm-flycheck helm-projectile helm-rtags projectile projectile-git-autofetch rtags srefactor smart-tabs-mode plantuml-mode magit auctex-lua company-lua flymake-lua lua-mode idle-highlight-mode use-package))
  '(plantuml-default-exec-mode 'jar)
  '(plantuml-executable-args '("-charset" "UTF-8" "-tsvg"))
  '(plantuml-indent-level 2)
